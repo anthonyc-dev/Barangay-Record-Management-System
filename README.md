@@ -1,69 +1,41 @@
-# React + TypeScript + Vite
+## How to Clone This Project (Without Using Git)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+If you don't want to use the `git` command to clone this repository, you can download the project as a ZIP file and extract it manually. Here are the steps:
 
-Currently, two official plugins are available:
+1. **Go to the GitHub Repository Page**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+   - Open your web browser and navigate to the GitHub page of this project.
 
-## Expanding the ESLint configuration
+2. **Download as ZIP**
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+   - On the repository page, look for the green **Code** button (usually near the top right).
+   - Click the **Code** button.
+   - In the dropdown menu, click **Download ZIP**.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+3. **Extract the ZIP File**
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+   - Once the ZIP file is downloaded, locate it in your Downloads folder (or wherever your browser saves files).
+   - Right-click the ZIP file and select **Extract All** (Windows) or **Extract Here** (Mac/Linux).
+   - Choose a destination folder and extract the contents.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+4. **Open the Project in Your Code Editor**
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+   - Open your code editor (such as VS Code).
+   - Use the **Open Folder** option to open the extracted project folder.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+5. **Install Dependencies**
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+   - Open a terminal in the project directory.
+   - Run the following command to install the required dependencies:
+     ```
+     pnpm install
+     ```
+
+6. **Run the Project**
+   - After installing dependencies, start the development server:
+     ```
+     pnpm dev
+     ```
+     ``
+
+That's it! You now have a local copy of the project without using any git commands.
