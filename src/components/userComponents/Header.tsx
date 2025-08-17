@@ -51,7 +51,7 @@ export const Header = () => {
 
           {/* CTA Buttons */}
           <div className="flex items-center space-x-4">
-            <Link to="/signin" tabIndex={-1}>
+            <Link to="/userLogin" tabIndex={-1}>
               <Button
                 variant="ghost"
                 className="hidden sm:inline-flex hover:bg-red-400 hover:text-white transition-colors duration-200 group relative"
@@ -133,7 +133,7 @@ export const Header = () => {
           ))}
           <div className="flex flex-col space-y-3 ">
             <Link
-              to="/signin"
+              to="/userLogin"
               tabIndex={-1}
               onClick={() => setMobileNavOpen(false)}
             >

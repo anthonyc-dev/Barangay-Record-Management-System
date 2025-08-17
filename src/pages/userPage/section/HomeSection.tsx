@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 export const HeroSection = () => {
   return (
@@ -36,20 +37,24 @@ export const HeroSection = () => {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <Button
-            variant="outline"
-            size="lg"
-            className="text-lg px-8 py-6 min-w-[200px] hover:bg-white/20 hover:border-white/30 hover:text-white"
-          >
-            Incident Report
-          </Button>
-          <Button
-            variant="ghost"
-            size="lg"
-            className="text-lg text-white  px-8 py-6 min-w-[200px] bg-white/20 backdrop-blur-md border border-white/30 shadow-lg hover:bg-white transition"
-          >
-            Request a Document
-          </Button>
+          <Link to={"/complaint"}>
+            <Button
+              variant="outline"
+              size="lg"
+              className="text-lg px-8 py-6 min-w-[200px] hover:bg-white/20 hover:border-white/30 hover:text-white"
+            >
+              Incident Report
+            </Button>
+          </Link>
+          <Link to={"/documentReq"}>
+            <Button
+              variant="ghost"
+              size="lg"
+              className="text-lg text-white  px-8 py-6 min-w-[200px] bg-white/20 backdrop-blur-md border border-white/30 shadow-lg hover:bg-white transition"
+            >
+              Request a Document
+            </Button>
+          </Link>
         </div>
       </div>
 

@@ -57,7 +57,7 @@ const PreRegister = () => {
   };
 
   const handleAlreadyHaveAccount = () => {
-    navigate("/signin");
+    navigate("/userLogin");
   };
 
   return (
@@ -96,7 +96,7 @@ const PreRegister = () => {
                   control={form.control}
                   name="firstName"
                   render={({ field }) => (
-                    <FormItem>
+                    <FormItem className="w-full">
                       <FormLabel>First Name</FormLabel>
                       <FormControl>
                         <Input placeholder="Juan" {...field} />
@@ -109,7 +109,7 @@ const PreRegister = () => {
                   control={form.control}
                   name="lastName"
                   render={({ field }) => (
-                    <FormItem>
+                    <FormItem className="w-full">
                       <FormLabel>Last Name</FormLabel>
                       <FormControl>
                         <Input placeholder="Dela Cruz" {...field} />
@@ -119,13 +119,13 @@ const PreRegister = () => {
                   )}
                 />
               </div>
-              {/* Birthdate and Gender in a row */}
-              <div className="flex justify-between items-center md:grid-cols-2 gap-4">
+              {/* Birthdate and Gender in a row (make same width as name fields) */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <FormField
                   control={form.control}
                   name="birthDate"
                   render={({ field }) => (
-                    <FormItem>
+                    <FormItem className="w-full">
                       <FormLabel>Birthdate</FormLabel>
                       <FormControl>
                         <Input type="date" {...field} />
@@ -138,14 +138,14 @@ const PreRegister = () => {
                   control={form.control}
                   name="gender"
                   render={({ field }) => (
-                    <FormItem>
+                    <FormItem className="w-full">
                       <FormLabel>Gender</FormLabel>
                       <FormControl>
                         <Select
                           onValueChange={field.onChange}
                           defaultValue={field.value}
                         >
-                          <SelectTrigger>
+                          <SelectTrigger className="w-full">
                             <SelectValue placeholder="Select gender" />
                           </SelectTrigger>
                           <SelectContent>

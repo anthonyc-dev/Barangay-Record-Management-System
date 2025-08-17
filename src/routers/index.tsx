@@ -8,8 +8,10 @@ import HomeUser from "@/pages/userPage/Home";
 import Signin from "@/pages/general/auth/signin";
 import Signup from "@/pages/general/auth/signup";
 import AddResident from "@/pages/adminPage/functions/AddResident";
-import PreRegister from "@/pages/userPage/section/PreRegister";
-import Map from "@/pages/userPage/section/Map";
+import ComplaintForm from "@/pages/userPage/section/ComplaintForm";
+import DocumentRequest from "@/pages/userPage/section/DocumentRequest";
+import PreRegister from "@/pages/userPage/section/userAuth/PreRegister";
+import UserLogin from "@/pages/userPage/section/userAuth/UserLogin";
 
 export default function AppRoutes() {
   return (
@@ -30,7 +32,9 @@ export default function AppRoutes() {
       </Route>
       {/* general */}
       <Route path="preRegister" element={<PreRegister />} />
-      <Route path="map" element={<Map />} />
+      <Route path="complaint" element={<ComplaintForm />} />
+      <Route path="documentReq" element={<DocumentRequest />} />
+      <Route path="userLogin" element={<UserLogin />} />
       <Route path="signin" element={<Signin />} />
       <Route path="signup" element={<Signup />} />
     </Routes>

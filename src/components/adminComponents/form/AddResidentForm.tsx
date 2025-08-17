@@ -96,6 +96,8 @@ export function AddResidentForm({
   const [profileImage, setProfileImage] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
 
+  console.log(profileImage);
+
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
