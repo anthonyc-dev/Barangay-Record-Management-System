@@ -36,6 +36,6 @@ If you don't want to use the `git` command to clone this repository, you can dow
      ```
      pnpm dev
      ```
-     ``
+
 
 That's it! You now have a local copy of the project without using any git commands.

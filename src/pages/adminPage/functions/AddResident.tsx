@@ -1,4 +1,4 @@
-import { ArrowLeft, UserPlus } from "lucide-react";
+import { ChevronLeft, UserPlus } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -19,11 +19,11 @@ export default function AddResident() {
     setIsLoading(false);
 
     // Navigate back to residents page after successful submission
-    navigate("/residents");
+    navigate("/admin/residents");
   };
 
   const handleCancel = () => {
-    navigate("/residents");
+    navigate("/admin/residents");
   };
 
   return (
@@ -34,11 +34,10 @@ export default function AddResident() {
           <Button
             variant="ghost"
             size="sm"
-            onClick={() => navigate("/residents")}
-            className="flex items-center space-x-2"
+            onClick={() => navigate(-1)}
+            className="flex items-center space-x-2 group"
           >
-            <ArrowLeft className="h-4 w-4" />
-            <span>Back to Residents</span>
+            <ChevronLeft className="h-10 w-10 font-bold transition-transform duration-200 group-hover:scale-110 group-hover:text-primary" />
           </Button>
           <div className="h-6 border-l border-border" />
           <div>

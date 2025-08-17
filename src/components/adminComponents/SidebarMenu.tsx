@@ -17,9 +17,9 @@ interface SidebarProps {
 }
 
 const navigation = [
-  { name: "Dashboard", href: "/", icon: Home },
-  { name: "Residents", href: "/residents", icon: Users },
-  { name: "Documents", href: "/documents", icon: FileText },
+  { name: "Dashboard", href: "/admin", icon: Home },
+  { name: "Residents", href: "/admin/residents", icon: Users },
+  { name: "Documents", href: "/admin/documents", icon: FileText },
   { name: "Financial", href: "/financial", icon: DollarSign },
   { name: "Reports", href: "/reports", icon: BarChart3 },
   { name: "Announcements", href: "/announcements", icon: Megaphone },

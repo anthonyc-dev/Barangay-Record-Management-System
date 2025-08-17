@@ -3,7 +3,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { format } from "date-fns";
-import { CalendarIcon, Upload, User } from "lucide-react";
+import { CalendarIcon, User } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -215,35 +215,8 @@ export function AddResidentForm({
             <CardTitle>Personal Information</CardTitle>
           </CardHeader>
           <CardContent className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-              <FormField
-                control={form.control}
-                name="firstName"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>First Name *</FormLabel>
-                    <FormControl>
-                      <Input placeholder="Juan" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-              <FormField
-                control={form.control}
-                name="middleName"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Middle Name</FormLabel>
-                    <FormControl>
-                      <Input placeholder="Santos" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
+            {/* Name Fields: First, Middle, Last, Suffix */}
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
               <FormField
                 control={form.control}
                 name="lastName"
@@ -257,7 +230,32 @@ export function AddResidentForm({
                   </FormItem>
                 )}
               />
-
+              <FormField
+                control={form.control}
+                name="firstName"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>First Name *</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Juan" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="middleName"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Middle Name</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Santos" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
               <FormField
                 control={form.control}
                 name="suffix"
@@ -273,106 +271,115 @@ export function AddResidentForm({
               />
             </div>
 
-            <div className="flex flex-col md:flex-row gap-4">
-              <div className="flex-1">
-                <FormField
-                  control={form.control}
-                  name="dateOfBirth"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Date of Birth *</FormLabel>
-                      <Popover>
-                        <PopoverTrigger asChild>
-                          <FormControl>
-                            <Button
-                              variant="outline"
-                              className={cn(
-                                "w-full pl-3 text-left font-normal",
-                                !field.value && "text-muted-foreground"
-                              )}
-                            >
-                              {field.value ? (
-                                format(field.value, "PPP")
-                              ) : (
-                                <span>Pick a date</span>
-                              )}
-                              <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                            </Button>
-                          </FormControl>
-                        </PopoverTrigger>
-                        <PopoverContent className="w-auto p-0" align="start">
-                          <Calendar
-                            mode="single"
-                            selected={field.value}
-                            onSelect={field.onChange}
-                            disabled={(date) =>
-                              date > new Date() || date < new Date("1900-01-01")
-                            }
-                            initialFocus
-                            className={cn("p-3 pointer-events-auto")}
-                          />
-                        </PopoverContent>
-                      </Popover>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-              <div className="flex-1">
-                <FormField
-                  control={form.control}
-                  name="age"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Age</FormLabel>
-                      <FormControl>
-                        <Input
-                          type="number"
-                          placeholder="25"
-                          {...field}
-                          onChange={(e) =>
-                            field.onChange(parseInt(e.target.value) || 0)
-                          }
-                          disabled
-                        />
-                      </FormControl>
-                      <FormDescription>
-                        Automatically calculated from date of birth
-                      </FormDescription>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-              <div className="flex-1">
-                <FormField
-                  control={form.control}
-                  name="gender"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Gender *</FormLabel>
-                      <Select
-                        onValueChange={field.onChange}
-                        defaultValue={field.value}
-                      >
+            {/* Birth Details: Date of Birth, Age, Place of Birth */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <FormField
+                control={form.control}
+                name="dateOfBirth"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Date of Birth *</FormLabel>
+                    <Popover>
+                      <PopoverTrigger asChild>
                         <FormControl>
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select gender" />
-                          </SelectTrigger>
+                          <Button
+                            variant="outline"
+                            className={cn(
+                              "w-full pl-3 text-left font-normal",
+                              !field.value && "text-muted-foreground"
+                            )}
+                          >
+                            {field.value ? (
+                              format(field.value, "PPP")
+                            ) : (
+                              <span>Pick a date</span>
+                            )}
+                            <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                          </Button>
                         </FormControl>
-                        <SelectContent>
-                          <SelectItem value="Male">Male</SelectItem>
-                          <SelectItem value="Female">Female</SelectItem>
-                        </SelectContent>
-                      </Select>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
+                      </PopoverTrigger>
+                      <PopoverContent className="w-auto p-0" align="start">
+                        <Calendar
+                          mode="single"
+                          selected={field.value}
+                          onSelect={field.onChange}
+                          disabled={(date) =>
+                            date > new Date() || date < new Date("1900-01-01")
+                          }
+                          initialFocus
+                          className={cn("p-3 pointer-events-auto")}
+                        />
+                      </PopoverContent>
+                    </Popover>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="age"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Age</FormLabel>
+                    <FormControl>
+                      <Input
+                        type="number"
+                        placeholder="25"
+                        {...field}
+                        onChange={(e) =>
+                          field.onChange(parseInt(e.target.value) || 0)
+                        }
+                        disabled
+                      />
+                    </FormControl>
+                    <FormDescription className="text-xs">
+                      Automatically calculated from date of birth
+                    </FormDescription>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="placeOfBirth"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Place of Birth *</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Manila, Philippines" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* Gender, Civil Status, Nationality, Religion */}
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+              <FormField
+                control={form.control}
+                name="gender"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Gender *</FormLabel>
+                    <Select
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                    >
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select gender" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="Male">Male</SelectItem>
+                        <SelectItem value="Female">Female</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
               <FormField
                 control={form.control}
                 name="civilStatus"
@@ -400,23 +407,6 @@ export function AddResidentForm({
                   </FormItem>
                 )}
               />
-
-              <FormField
-                control={form.control}
-                name="placeOfBirth"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Place of Birth *</FormLabel>
-                    <FormControl>
-                      <Input placeholder="Manila, Philippines" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <FormField
                 control={form.control}
                 name="nationality"
@@ -430,7 +420,6 @@ export function AddResidentForm({
                   </FormItem>
                 )}
               />
-
               <FormField
                 control={form.control}
                 name="religion"
